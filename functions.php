@@ -76,15 +76,25 @@ function logInUser($email, $hash){
 				$stmt->close();
 				$mysqli->close();
 	                //saadan sõnumi õnnestumise kohta
-	           return $message; 
+	               return $message; 
+			   
 			   }
-			   function getALLData();
-			   $stmt = $mysqli->prepare("SELECT id, user_id, number_plate, color FROM car_platesUES(?,?,?)");
+			   
+			   function getAllData(){
+				   
+				 $mysqli = new mysqli($GLOBALS["servername"], $GLOBALS["server_username"], $GLOBALS["server_password"], $GLOBALS["database"]);  
+			   
+			   $stmt = $mysqli->prepare("SELECT id, user_id, number_plate, color FROM car_plates");
     		   $stmt -> bind_result($id_from_db, $user_id_from_db, $number_plate_from_db, $color_from_db);
 			   $stmt->execute();
 				
-				while($stmt)
-				
+				while($stmt->fetch()){
+					echo($user_id_from_db);///  siit jätkame järgmisel korral.
+			   }
+	       $stmt->close(); 
+		   $mysqli->close();      
+		   } 
+
 				
 ?>            
 

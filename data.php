@@ -59,7 +59,7 @@
   	return $data;
   }
   
-  /küsime tabeli kujul andmed
+  //küsime tabeli kujul andmed
   getALLData();
   
  ?>
