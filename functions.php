@@ -39,11 +39,12 @@ function logInUser($email, $hash){
 
      function createUser($create_email, $hash){
                  $mysqli = new mysqli($GLOBALS["servername"], $GLOBALS["server_username"], $GLOBALS["server_password"], $GLOBALS["database"]);
+				 echo $mysqli->error;
 	// salvestan andmebaasi
-				$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password) VALUES(?,?))");
+				$stmt = $mysqli->prepare("INSERT INTO user_sample (email, password) VALUES(?,?)");
 				//kirjutan välja error
                 //echo $stmt->error;
-                //echo $mysqli->error;
+                echo $mysqli->error;
 				
 				// paneme muutujad küsimärkide asemele ss - string, iga muutuja kohta 1 täht
 				$stmt->bind_param("ss", $create_email, $hash);
