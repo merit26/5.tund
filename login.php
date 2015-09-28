@@ -74,7 +74,7 @@
 			}
 
 			if(	$create_email_error == "" && $create_password_error == ""){
-				echo hash("sha512", $create_password);
+				//echo hash("sha512", $create_password); //See annab veebilehel näha selle pw koodina.
 				//echo "Võib kasutajat luua! Kasutajanimi on ".$create_email." ja parool on ".$create_password;
 				// tekitan parooliräsi
 				$hash = hash("sha512", $create_password);

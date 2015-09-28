@@ -55,4 +55,37 @@ function logInUser($email, $hash){
 				
 				$mysqli->close();
    }
-?>
+   function createCarPlate($car_plate, $color){
+                 $mysqli = new mysqli($GLOBALS["servername"], $GLOBALS["server_username"], $GLOBALS["server_password"], $GLOBALS["database"]);
+				 // salvestan andmebaasi
+				$stmt = $mysqli->prepare("INSERT INTO car_plates (user_id, number_plate, color) VALUES(?,?,?)");
+				//kirjutan välja error
+                //echo $stmt->error;
+                //echo $mysqli->error;
+				
+				// paneme muutujad küsimärkide asemele ss - string, iga muutuja kohta 1 täht i-user_id int
+				$stmt->bind_param("iss", $_SESSION['logged_in_user_id'], $car_plate, $color);
+				
+				// käivitab sisestuse
+				if($stmt->execute()){
+					
+					
+					//õnnestus
+				   $message = "edukalt salvestatud!";
+				}
+				$stmt->close();
+				$mysqli->close();
+	                //saadan sõnumi õnnestumise kohta
+	           return $message; 
+			   }
+			   function getALLData();
+			   $stmt = $mysqli->prepare("SELECT id, user_id, number_plate, color FROM car_platesUES(?,?,?)");
+    		   $stmt -> bind_result($id_from_db, $user_id_from_db, $number_plate_from_db, $color_from_db);
+			   $stmt->execute();
+				
+				while($stmt)
+				
+				
+?>            
+
+   
