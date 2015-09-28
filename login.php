@@ -4,8 +4,7 @@
    // kontrolin, kas sessioonimuutja on olemas
    if(isset($_SESSION['logged_in_user_id'])){
 	   header("Location: data.php");
-	   
-	   
+		   
    }
 
   // muuutujad errorite jaoks
@@ -84,6 +83,7 @@
 			createUser($create_email, $hash); 
 			} 
 		} 
+		
 		} 
        
 
